@@ -29,3 +29,12 @@ function MultiplicarNumeros() {
     return multiplicacao;
 }
 console.log(MultiplicarNumeros());
+
+//5 - Crie uma função que receba os dois valores fornecidos pelo usuário
+// e faça uma divisão com eles, e retorne o resultado;
+
+function DividirNumeros() {
+    var divisao = (numeroA / numeroB);
+    return divisao;
+}
+console.log(DividirNumeros());

@@ -11,3 +11,12 @@ function SomarNumeros() {
     return soma;
 }
 console.log(SomarNumeros());
+
+//3 - Crie uma função que receba os dois valores fornecidos pelo usuário
+// e faça uma subtração com eles, e retorne o resultado;
+
+function SubtrairNumeros() {
+    var subtracao = (numeroA - numeroB)
+    return subtracao;
+}
+console.log(SubtrairNumeros());

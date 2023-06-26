@@ -1,7 +1,13 @@
 // 1 - Crie um algoritmo que solicite ao seu usuário dois números A e B.
 
-var numeroA = prompt("Qual é o número A?");
-var numeroB = prompt("Qual é o número B?");
+var numeroA = parseInt(prompt("Qual é o número A?"));
+var numeroB = parseInt(prompt("Qual é o número B?"));
 
+//2 - Crie uma função que receba os dois valores fornecidos pelo usuário
+// e faça uma soma com eles, e retorne o resultado;
 
-
+function SomarNumeros() {
+    var soma = (numeroA + numeroB)
+    return soma;
+}
+console.log(SomarNumeros());

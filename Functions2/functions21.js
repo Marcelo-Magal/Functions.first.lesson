@@ -3,6 +3,8 @@ let nome;
 let salario;
 
 PerguntarDados();
+CalcularAumento(nome, salario);//3 - Depois de calcular o aumento você deve exibir:
+                               // o nome do colaborador, o salário, a % de aumento e o salário reajustado.
 
 
 
@@ -38,4 +40,6 @@ function CalcularAumento(nome, salario) {
     }
 
     let novoSalario = salario + (salario * aumento);
+    //3 - Depois de calcular o aumento você deve exibir: o nome do colaborador, o salário, a % de aumento e o salário reajustado.
+    console.log(nome + " - salário: R$" + salario + " - " + (aumento * 100) + "% de aumento - novo salário: R$" + novoSalario);
 }

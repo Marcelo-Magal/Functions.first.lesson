@@ -3,15 +3,14 @@ let nome;
 let salario;
 
 PerguntarDados();
-CalcularAumento(nome, salario);//3 - Depois de calcular o aumento você deve exibir:
-                               // o nome do colaborador, o salário, a % de aumento e o salário reajustado.
-
 
 
 //1 - Crie uma função que pergunte o nome e o salário de um colaborador;
 function PerguntarDados() {
     nome = prompt("Qual é o nome do colaborador?");
     salario =parseInt(prompt("Qual o salário desse colaborador?"));
+    CalcularAumento(nome, salario);//3 - Depois de calcular o aumento você deve exibir:
+                               // o nome do colaborador, o salário, a % de aumento e o salário reajustado.
 }
 
 //2 - Depois crie uma função que irá calcular o aumento de salário
@@ -42,4 +41,15 @@ function CalcularAumento(nome, salario) {
     let novoSalario = salario + (salario * aumento);
     //3 - Depois de calcular o aumento você deve exibir: o nome do colaborador, o salário, a % de aumento e o salário reajustado.
     console.log(nome + " - salário: R$" + salario + " - " + (aumento * 100) + "% de aumento - novo salário: R$" + novoSalario);
+    CalcularNovamente();
+}
+
+function CalcularNovamente() {
+    let resposta = prompt("Deseja cadastrar outro colaborador?");
+    if (resposta.toUpperCase() == 'S' || resposta.toUpperCase() == 'SIM') {
+        PerguntarDados();
+    }
+    else {
+        console.log("Programa encerrado");
+    }
 }

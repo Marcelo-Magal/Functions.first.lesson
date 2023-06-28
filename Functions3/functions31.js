@@ -41,6 +41,28 @@ function FazerLogin() {
             console.log("Nome de usuário ou senha incorretos");
         }
     }
+}
 
+//4 - Crie uma função de exclusão de cadastro que recebe um nome como parâmetro,
+// então procure pelo nome no array de nomes e exclua ele e a senha correspondente
+// do outro varray, por fim organize o array para eliminar os espaços vazios.
+
+function ExcluirCadastro() {
+    let excluindoNome = ("Qual o nome do cadatro que deseja excluir?");
+    let excluido = false;
+    for (i = 0; i < nomes.length; i++) {
+        if (excluindoNome == nomes[i]) {
+            for (j = i; j < nomes.length - 1; j++) {
+                nomes[k] = nomes[k - 1];
+                senhas[k] = senhas[k - 1];
+            }
+            j++;
+            console.log("Usuário excluído");
+            excluido = true;
+        }
+        if (excluido == false) {
+            console.log("Usuário não encontrado");
+        }
+    }
 
 }

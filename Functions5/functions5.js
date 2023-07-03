@@ -109,3 +109,15 @@ function ExibirOrdenadosPorAvaliacaoDaMaiorParaMenor() {
         console.log(ids[i] + nomrs[i] + precos[i] + avaliacoes[i]); // O console mostra as arrays ja em ordem de avaliacoes, 
     }                                                               // pq array[0], vai ser sempre array[0], nao importa se é 
 }                                                                   // j, i, etc. Se troquei de posicao, vai continuar assim no codigo.
+
+//6 - Atualizar o preço de um produto, para isso deve receber o id do produto
+// como parâmetro e o novo valor para atualizar;
+//   Ex.: Id = 3, Valor = 200
+
+function AtualizarPreco(id, novoPreco) {
+    for (let i = 0; i < ids.length; i++) {
+        if(id == ids[i]) {
+            precos[i] == novoPreco;
+        }
+    }
+}

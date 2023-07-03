@@ -75,3 +75,37 @@ function ExibirOrdenadosPorID() {
         console.log(ids[i] + nomes[i] + precos[i] + avaliacoes[i]);
     }
 }
+
+//5 - Exibir os produtos pela ordem de avaliação, da maior para a menor;
+function ExibirOrdenadosPorAvaliacaoDaMaiorParaMenor() {
+    let idSup;
+    let nomeSup;
+    let precoSup;
+    let avaliacaoSup;
+
+    for (let i = 0; i < ids.length; i++) {
+        for (let j = 0; j < ids.length; j++) {
+            if (avaliacoes[j] < avaliacoes[j +1]) {
+                idSup = ids[j];
+                ids[j] = ids[j +1];
+                ids[j + 1] = idSup;
+
+                nomeSup = nomes[j];
+                nomes[j] = nomes[j +1];
+                nomes[j + 1] = nomeSup;
+
+                precoSup = precos[j];
+                precos[j] = precos[j +1];
+                precos[j + 1] = precoSup;
+
+                avaliacaoSup = avaliacoes[j];
+                avaliacoes[j] = avaliacoes[j +1];
+                avaliacoes[j + 1] = avaliacaoSup;
+            }
+        }
+    }
+    
+    for (let i = 0; i < ids.length; i++) {                          // ja fiquei com essa duvida mais de uma vez.
+        console.log(ids[i] + nomrs[i] + precos[i] + avaliacoes[i]); // O console mostra as arrays ja em ordem de avaliacoes, 
+    }                                                               // pq array[0], vai ser sempre array[0], nao importa se é 
+}                                                                   // j, i, etc. Se troquei de posicao, vai continuar assim no codigo.

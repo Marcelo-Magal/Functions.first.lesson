@@ -5,7 +5,7 @@
 
 
 let notas = ReceberNotas();
-console.log(CalcularMedias(notas[0], notas[1], notas[2], notas[3])); //spread operator
+console.log(CalcularMedias(notas[0], notas[1], notas[2], notas[3])); //spread operator (olhar embaixo)
 
 function ReceberNotas() {
     let nota1 = parseInt(prompt("Qual a primeira nota?"));
@@ -28,9 +28,9 @@ function CalcularMedias(nota1, nota2, nota3, tipo) {
 
 
 //let notas = ReceberNotas();
-//console.log(CalcularMedias(...notas));       //como notas esta recebendo uma array, [nota1, nota2, nota3, tipo], 
-//
-//function ReceberNotas() {
+//console.log(CalcularMedias(...notas));       //como "notas" esta recebendo uma array, [nota1, nota2, nota3, tipo], 
+//                                             // se eu colocar somente "notas", ele vai recer uma array ao inves de
+//function ReceberNotas() {                    // 4 argumentos para funcão.
 //    let nota1 = parseInt(prompt("Qual a primeira nota?"));
 //    let nota2 = parseInt(prompt("Qual a segunda nota?"));
 //    let nota3 = parseInt(prompt("Qual a terceira nota?"));

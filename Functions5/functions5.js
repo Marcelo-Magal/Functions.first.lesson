@@ -44,3 +44,34 @@ function BuscarPeloNome(nome) {
         }
     }
 }
+
+//4 - Exibir todos os produtos ordenados pelo id;
+function ExibirOrdenadosPorID() {
+    let idsSup = [];
+    let nomesSup = [];
+    let precosSup = [];
+    let avaliacoesSup = [];
+    let contadorSup = 0;
+
+    for (let i = 0; i < ids.length; i++) { // Este loop percorre todos os elementos do array de IDs.
+        for (let i2 = 0; i2 < ids.length; i2++) { // Este loop interno também percorre todos os elementos do array de IDs.
+            if (ids[i2] == contadorSup + 1){ // Verifica se o ID na posição i2 é igual ao valor atual do contador (incrementado por 1).
+                ids[contadorSup] = ids[i2]; // Se for, ele atribui o ID, nome, preço e avaliação na posição i2 aos novos arrays na posição atual do contador.
+                nomesSup[contadorSup] = nomes[i2]; 
+                precosSup[contadorSup] = precos[i2];
+                avaliacoesSup[contadorSup] = avaliacoesSup[i2];
+                contadorSup++;
+                i2 = ids.length; // Define i2 como o comprimento do array de IDs para encerrar o loop interno.
+            }
+        }
+    }
+
+    ids = idsSup;
+    nomes = nomesSup;
+    precos = precosSup;
+    avaliacoes = avaliacoesSup;
+
+    for (let i = 0; i < ids.length; i++) {
+        console.log(ids[i] + nomes[i] + precos[i] + avaliacoes[i]);
+    }
+}

@@ -121,3 +121,28 @@ function AtualizarPreco(id, novoPreco) {
         }
     }
 }
+
+//7 - Deletar um produto, não esqueça de organizar as informações para que não fique espaços vazios;
+
+function ApagarProduto() {
+    for (let i = 0; i < ids.length; i++) {
+        if (id == ids[i]) {
+            if (i != contador - 1) {
+                for (let j = i; j < ids.length - 1; j++) { //você está acessando o produto na posição j + 1.
+                    ids[j] = ids[j + 1];                 // Se j fosse igual a contador, então j + 1 seria igual a contador + 1, 
+                    nomes[j] = nomes[j + 1];             // // que está fora dos limites do array. Portanto, para evitar acessar 
+                    precos[j] = precos[j + 1];           // um índice fora dos limites do array, o loop vai apenas até contador - 1.
+                    avaliacoes[j] = avaliacoes[j + 1];             
+               }
+            } 
+        
+        contador--;
+        ids.length = contador;
+        nomes.length = contador; // Ajusta o tamanho dos arrays nomes e senhas para o número atual de usuários 
+        precos.length = contador;//depois de mover todos os usuários. Isso garante que o usuário excluído seja completamente removido do array.
+        avaliacoes.length = contador;
+        console.log("Produto excluído.");
+        }
+
+    }
+}

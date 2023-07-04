@@ -4,22 +4,83 @@ let nomes = [];
 let precos = [];
 let avaliacoes = [];
 let contador = 0;
+let continuar = true;
+let id, nome, produto;
+
 
 //8 - Por fim, utilizando as funções criadas organize a execução do seu código,
 // faça com que o usuário possa escolher qual função executar e quando encerrar o programa.
 
+while (continuar) {
+    let opcao = parseInt(prompt("Escolha uma opção:\nDigite 1 - CADASTRO\nDigite 2 - BUSCAR PRODUTO POR ID\nDigite 3 - BUSCAR PRODUTO PELO NOME\nDigite 4 - EXIBIR PRODUTOS ORDENADOS PELO ID\nDigite 5 - EXIBIR PRODUTOS ORDENADOS PELA AVALIAÇÃO\nDigite 6 - ATUALIZAR PREÇO DE UM PRODUTO\nDigite 7 - APAGAR UM PRODUTO\nDigite 8 - ENCERRAR PROGRAMA"));
+
+    switch (opcao) {
+
+        case 1: //CADASTRO
+            CadastrarProduto();
+            break;
+
+        case 2: //BUSCAR PRODUTO POR ID
+            id = parseInt(prompt("Digite a ID do produto que deseja buscar?"));
+            produto = BuscarPorID(id);
+            console.log(produto); //Como estou dando console.log do Return da funçao, apaguei os console.log da função.
+            break;
+
+        case 3: //BUSCAR PRODUTO PELO NOME
+            nome = prompt("Digite o nome do produto que deseja exibir o ID?");
+            id = BuscarPeloNome(nome);
+            console.log("A ID do produto é " + id);
+            break;
+
+        case 4: //EXIBIR PRODUTOS ORDENADOS PELO ID
+            ExibirOrdenadosPorID();
+            break;
+            
+        case 5: //EXIBIR PRODUTOS ORDENADOS PELA AVALIAÇÃO
+            ExibirOrdenadosPorAvaliacaoDaMaiorParaMenor();
+            break;
+
+        case 6: //ATUALIZAR PREÇO DE UM PRODUTO
+            id = parseInt(prompt("Digite a ID do produto que deseja atualizar o preço"));
+            let novoPreco = parseFloat(prompt("Digite o novo preço do produto?"));
+            AtualizarPreco(id, novoPreco);
+            break;
+
+        case 7: //APAGAR UM PRODUTO
+            id = parseInt(prompt("Digite o ID do produto que deseja excluir"));
+            ApagarProduto(id);
+            break;
+
+        case 8: //ENCERRAR PROGRAMA
+            console.log("Programa encerrado.")
+            continuar = false
+            break;
+
+        default:
+            console.log("Operação inválida. Tente novamente.");
+            break;
+    }
+}
 
 
 //1 - Cadastrar um produto. Um produto deve ter um id, nome, preço e avaliação;
 function CadastrarProduto() {
-    let id = prompt("Qual é a ID do produto?");
+    let id = parseInt(prompt("Qual é a ID do produto?"));
     let nome = prompt("Qual é o nome do produto?");
-    let preco = prompt("Qual é o preço do produto?");
-    let avaliacao = prompt("Qual é a nota de avaliação do produto?");
+    let preco = parseFloat(prompt("Qual é o preço do produto?"));
+    let avaliacao = parseInt(prompt("Qual é a nota de avaliação do produto?"));
 
-    id[contador] = id;
+    //Procura por um ID igual ao informado no array ids 
+    for (let i = 0; i < ids.length; i++) {
+        if (ids[i] === id) {
+            console.log("ID de produto já existente!");
+            return; // se um ID igual foi encontrado, a função retorna e impede o registro do novo produto
+        }
+    }
+
+    ids[contador] = id;
     nomes[contador] = nome;
-    precos[contador] = precos;
+    precos[contador] = preco;
     avaliacoes[contador] = avaliacao;
     contador++;
 
@@ -31,8 +92,17 @@ function CadastrarProduto() {
 //   Ex.: Entrada = 3
 function BuscarPorID (id) {
     for (let i = 0; i < ids.length; i++) {
-        if (id == id[i]) {
-            console.log(ids[i] + nomes[i] + precos[i] + avaliacoes[i]);
+        if (id == ids[i]) {
+            //console.log("ID: " + ids[i]); 
+            //console.log("Nome: " + nomes[i]);
+            //console.log("Preço: " + precos[i]);
+            //console.log("Avaliação: " + avaliacoes[i]);
+            return {
+                id: ids[i],
+                nome: nomes[i],
+                preco: precos[i],
+                avaliacao: avaliacoes[i]
+            };
         }
     }
 }
@@ -59,10 +129,10 @@ function ExibirOrdenadosPorID() {
     for (let i = 0; i < ids.length; i++) { // Este loop percorre todos os elementos do array de IDs.
         for (let i2 = 0; i2 < ids.length; i2++) { // Este loop interno também percorre todos os elementos do array de IDs.
             if (ids[i2] == contadorSup + 1){ // Verifica se o ID na posição i2 é igual ao valor atual do contador (incrementado por 1).
-                ids[contadorSup] = ids[i2]; // Se for, ele atribui o ID, nome, preço e avaliação na posição i2 aos novos arrays na posição atual do contador.
+                idsSup[contadorSup] = ids[i2]; // Se for, ele atribui o ID, nome, preço e avaliação na posição i2 aos novos arrays na posição atual do contador.
                 nomesSup[contadorSup] = nomes[i2]; 
                 precosSup[contadorSup] = precos[i2];
-                avaliacoesSup[contadorSup] = avaliacoesSup[i2];
+                avaliacoesSup[contadorSup] = avaliacoes[i2];
                 contadorSup++;
                 i2 = ids.length; // Define i2 como o comprimento do array de IDs para encerrar o loop interno.
             }
@@ -75,7 +145,7 @@ function ExibirOrdenadosPorID() {
     avaliacoes = avaliacoesSup;
 
     for (let i = 0; i < ids.length; i++) {
-        console.log(ids[i] + nomes[i] + precos[i] + avaliacoes[i]);
+        console.log("Ids: " + ids[i] + " - Nomes: " + nomes[i] + " - Preços: " + precos[i] + " - Avaliações: " + avaliacoes[i]);
     }
 }
 
@@ -109,7 +179,7 @@ function ExibirOrdenadosPorAvaliacaoDaMaiorParaMenor() {
     }
     
     for (let i = 0; i < ids.length; i++) {                          // ja fiquei com essa duvida mais de uma vez.
-        console.log(ids[i] + nomrs[i] + precos[i] + avaliacoes[i]); // O console mostra as arrays ja em ordem de avaliacoes, 
+        console.log("Ids: " + ids[i] + " - Nomes: " + nomes[i] + " - Preços: " + precos[i] + " - Avaliações: " + avaliacoes[i]); // O console mostra as arrays ja em ordem de avaliacoes, 
     }                                                               // pq array[0], vai ser sempre array[0], nao importa se é 
 }                                                                   // j, i, etc. Se troquei de posicao, vai continuar assim no codigo.
 
@@ -120,13 +190,13 @@ function ExibirOrdenadosPorAvaliacaoDaMaiorParaMenor() {
 function AtualizarPreco(id, novoPreco) {
     for (let i = 0; i < ids.length; i++) {
         if(id == ids[i]) {
-            precos[i] == novoPreco;
+            precos[i] = novoPreco;
         }
     }
 }
 
 //7 - Deletar um produto, não esqueça de organizar as informações para que não fique espaços vazios;
-function ApagarProduto() {
+function ApagarProduto(id) {
     let idsSup = [];
     let nomesSup = [];
     let precosSup = [];
@@ -148,7 +218,7 @@ function ApagarProduto() {
     ids = idsSup;
     nomes = nomesSup;
     precos = precosSup;
-    avaliacoesSup = avaliacoes;
+    avaliacoes = avaliacoesSup;
 
 }
 

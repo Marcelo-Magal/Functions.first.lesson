@@ -392,7 +392,7 @@ function ExcluirProdutoCarrinho(nomeExcluir, quantidadeExcluir) {
 function RetornarValorTotalCarrinho() {
     let valorTotalCarrinho = 0;
     for (let i = 0; i < produtosCarrinho.length; i++) {
-        for (let i2 = 0; i < nomes.length; i2++) {
+        for (let i2 = 0; i2 < nomes.length; i2++) {
             
             if (produtosCarrinho[i] == nomes[i2]) {
                 let valor = (quantidades[i] * precos[i2]);
